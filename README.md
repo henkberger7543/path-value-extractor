@@ -23,3 +23,10 @@ The path grammar supports dot segments (`a.b`), bracket segments (`a[0]`), and q
 An explicit `undefined` stored at a path still reports `exists: true`. If you want \"truthy and present\", check both `exists` and `value != null`.
 
 A syntactically broken path (e.g. an unterminated bracket) is treated as a non-existent path: `extractValue` returns `{ value: undefined, exists: false }`. If you need to surface syntax errors to the user, call `parsePath` directly — it throws `SyntaxError` on malformed input.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
