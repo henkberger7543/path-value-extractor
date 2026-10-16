@@ -1,6 +1,6 @@
 {
   "name": "path-value-extractor",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Given a dot or bracket path string and a root object, returns the value at that path plus a flag indicating whether the path existed.",
   "type": "module",
   "main": "src/index.js",
